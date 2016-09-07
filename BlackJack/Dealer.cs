@@ -83,7 +83,7 @@ namespace BlackJack {
         private void DrawCurrentHand(SpriteBatch spriteBatch) {
             if (currentHand != null) {
                 for (int i = 0; i < currentHand.Count; i++) {
-                    currentHand[i].Position = new Vector2(365 + 80 * i, 150);
+                    currentHand[i].Position = new Vector2(365 + 80 * i, 175);
                     currentHand[i].Draw(spriteBatch);
                 }
             }
