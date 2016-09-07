@@ -8,5 +8,6 @@ using Microsoft.Xna.Framework.Input;
 
 namespace BlackJack {
     class InputHandler {
+        MouseState currMouseState, prevMouseState;
     }
 }
