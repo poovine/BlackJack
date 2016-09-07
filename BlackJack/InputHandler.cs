@@ -9,36 +9,42 @@ using Microsoft.Xna.Framework.Input;
 namespace BlackJack {
     class InputHandler {
         MouseState prevMouseState = Mouse.GetState(), currMouseState;
-        private ICommand cmd = new DoNothing();
+        HitCommand hitCommand = new HitCommand();
+        StandCommand standCommand = new StandCommand();
+        DoubleDownCommand doubleDownCommand = new DoubleDownCommand();
+        SplitCommand splitCommand = new SplitCommand();
+        BetCommand betCommand = new BetCommand();
+        DoNothing doNothing = new DoNothing();
+        ICommand cmd = null;
 
         public ICommand HandleInput() {
 
             currMouseState = Mouse.GetState();
             //try to use delegates here
             if (prevMouseState.LeftButton == ButtonState.Released && currMouseState.LeftButton == ButtonState.Pressed && IsTouchingHitButton()) {
-                cmd = new HitCommand();
+                cmd = hitCommand;
             }
 
             else if (prevMouseState.LeftButton == ButtonState.Released && currMouseState.LeftButton == ButtonState.Pressed && IsTouchingStandButton()) {
-                cmd = new StandCommand();
+                cmd = standCommand;
             }
 
             else if (prevMouseState.LeftButton == ButtonState.Released && currMouseState.LeftButton == ButtonState.Pressed && IsTouchingDoubleButton()) {
-                cmd = new DoubleDownCommand();
+                cmd = doubleDownCommand;
             }
 
             else if (prevMouseState.LeftButton == ButtonState.Released && currMouseState.LeftButton == ButtonState.Pressed && IsTouchingSplitButton()) {
-                cmd = new SplitCommand();
+                cmd = splitCommand;
             }
 
             else if (prevMouseState.LeftButton == ButtonState.Released && currMouseState.LeftButton == ButtonState.Pressed && IsTouchingBetButton()) {
-                cmd = new BetCommand();
+                cmd = betCommand;
             }
 
             else {
-                cmd = new DoNothing();
+                cmd = doNothing;
             }
-            prevMouseState = Mouse.GetState();
+            prevMouseState = currMouseState;
             return cmd;
         }
 

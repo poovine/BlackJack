@@ -20,8 +20,7 @@ namespace BlackJack {
         }
 
         Player player;
-        Dealer dealer;
-      
+        Dealer dealer;      
 
         public InputHandler InputHandler { get; private set; }
 
@@ -34,7 +33,6 @@ namespace BlackJack {
             player = GameManager.Instance.Player;
             dealer = GameManager.Instance.Dealer;
         }
-
 
         public void Update(GameTime gameTime) {
             var cmd = InputHandler.HandleInput();

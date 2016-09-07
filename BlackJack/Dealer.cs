@@ -9,6 +9,8 @@ using Microsoft.Xna.Framework.Graphics;
 namespace BlackJack {
     class Dealer : GameCharacter {
 
+        
+
         public int LowHandValue {
             get {
                 if (currentHand != null) { GetHandValues(); }

@@ -32,8 +32,7 @@ namespace BlackJack {
             this.suit = suit;                        
         }   
 
-        public override void Update(GameTime gameTime) {
-             
+        public override void Update(GameTime gameTime) {             
         }
 
         public override void Draw(SpriteBatch spriteBatch) {

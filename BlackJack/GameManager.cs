@@ -24,7 +24,8 @@ namespace BlackJack {
 
         public Player Player { get; private set; }
         public Dealer Dealer { get; private set; }
-            
+        
+        //try to move this somewhere else    
         private Button hitButton, standButton, doubleButton, splitButton, betButton;
         public Button HitButton { get { return hitButton; } }
         public Button StandButton { get { return standButton; } }
@@ -32,12 +33,9 @@ namespace BlackJack {
         public Button SplitButton { get { return splitButton; } }
         public Button BetButton { get { return betButton; } }
 
-        private Texture2D playerTexture;
-        private Texture2D dealerTexture;        
-        private Texture2D buttonSprites;
+        private Texture2D playerTexture, dealerTexture, buttonSprites;
         private Vector2 playerPosition = new Vector2(600, 650);
         private Vector2 dealerPosition = new Vector2(600,0);
-
         private ContentManager content;
 
         public GameManager() {
@@ -60,12 +58,9 @@ namespace BlackJack {
             //Dealer.Hit(Player);
             Console.WriteLine(Player.HighHandValue);
            // Dealer.Hit(Dealer);
-            Console.WriteLine(Dealer.HighHandValue);
-            
+            Console.WriteLine(Dealer.HighHandValue);            
 
-            /******Test Area ********/
-
-         
+            /******Test Area ********/         
         }
 
         public void UnLoadContent() {
