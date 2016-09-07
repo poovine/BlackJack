@@ -17,14 +17,12 @@ namespace BlackJack {
             }
         }
 
-
         public int HighHandValue {
             get {
                 if (currentHand != null) { GetHandValues(); }
                 return highHandValue;
             }
-        }
-              
+        }              
 
         public Dealer(Texture2D playerTexture, Vector2 position, Rectangle maskRectangle)
                         : base(playerTexture, position, maskRectangle) {
@@ -42,7 +40,6 @@ namespace BlackJack {
             base.Draw(spriteBatch);
         }
 
-
         public void DealCards(params Player[] players) {
             Player player = players[0];
             DealCardToPlayer(player);
@@ -54,7 +51,6 @@ namespace BlackJack {
             DealCardToDealer();
             RemoveLastCardFromDeck();
         }
-
         
         public void Hit(GameCharacter gameCharacter) {
             if (gameCharacter is Player) {

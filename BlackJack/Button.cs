@@ -10,7 +10,7 @@ namespace BlackJack {
     class Button : Sprite {
         
         public Button(Texture2D buttonTexture, Vector2 buttonPosition, Rectangle sourceRectangle) : base (buttonTexture, buttonPosition, sourceRectangle) {
-
+            
         }
 
         public override void Update(GameTime gameTime) {
@@ -18,7 +18,7 @@ namespace BlackJack {
         }
 
         public override void Draw(SpriteBatch spriteBatch) {
-            spriteBatch.Draw(spriteTexture, position, sourceRectangle, Color.White);
+            spriteBatch.Draw(spriteTexture, position, sourceRectangle, Color.White);          
             base.Draw(spriteBatch);
         }
     }

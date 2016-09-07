@@ -13,7 +13,7 @@ namespace BlackJack {
         protected Rectangle sourceRectangle;
         protected Texture2D spriteTexture;
         protected float scale, rotation, layerDepth;
-        protected bool isActive, isVisible;
+        protected bool isActive, isVisible = true;
         protected ContentManager content;
              
 
