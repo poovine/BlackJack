@@ -42,7 +42,6 @@ namespace BlackJack {
             }
             else
                 spriteBatch.Draw(spriteTexture, position, new Rectangle(76 * 13, 210, 71, 100), Color.White);
-
         }
 
     }

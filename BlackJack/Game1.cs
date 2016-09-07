@@ -57,6 +57,7 @@ namespace BlackJack {
             CardManager.Instance.LoadContent();
             GameManager.Instance.LoadContent();
             ScreenManager.Instance.LoadContent();
+            InputManager.Instance.LoadContent();
 
 
             base.Initialize();
@@ -66,6 +67,8 @@ namespace BlackJack {
         protected override void LoadContent() {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+           
          
 
             
@@ -87,6 +90,7 @@ namespace BlackJack {
 
                     break;
                 case GameState.Game:
+                    InputManager.Instance.Update(gameTime);
                     ScreenManager.Instance.Update(gameTime);
                     GameManager.Instance.Update(gameTime);
                     CardManager.Instance.Update(gameTime);

@@ -55,9 +55,12 @@ namespace BlackJack {
         public void Hit(GameCharacter gameCharacter) {
             if (gameCharacter is Player) {
                 DealCardToPlayer(gameCharacter as Player);
+                RemoveLastCardFromDeck();
             }
-            else
+            else {
                 DealCardToDealer();
+                RemoveLastCardFromDeck();
+            }
         }
 
         private void RemoveLastCardFromDeck() {
@@ -68,6 +71,7 @@ namespace BlackJack {
             var nextCard = CardManager.Instance.Deck[CardManager.Instance.Deck.Count - 1];
             nextCard.IsShowing = cardShowing;
             player.CurrentHand.Add(nextCard);
+
         }
 
         private void DealCardToDealer(bool cardShowing = true) {

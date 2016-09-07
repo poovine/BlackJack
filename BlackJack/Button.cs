@@ -9,6 +9,9 @@ using Microsoft.Xna.Framework.Graphics;
 namespace BlackJack {
     class Button : Sprite {
         
+        public Vector2 Position { get { return position; } }
+        public Rectangle SourceRectangle { get { return sourceRectangle; } }
+
         public Button(Texture2D buttonTexture, Vector2 buttonPosition, Rectangle sourceRectangle) : base (buttonTexture, buttonPosition, sourceRectangle) {
             
         }

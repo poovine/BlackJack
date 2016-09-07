@@ -26,8 +26,11 @@ namespace BlackJack {
         public Dealer Dealer { get; private set; }
             
         private Button hitButton, standButton, doubleButton, splitButton, betButton;
-            
-        
+        public Button HitButton { get { return hitButton; } }
+        public Button StandButton { get { return standButton; } }
+        public Button DoubleButton { get { return doubleButton; } }
+        public Button SplitButton { get { return splitButton; } }
+        public Button BetButton { get { return betButton; } }
 
         private Texture2D playerTexture;
         private Texture2D dealerTexture;        
@@ -46,13 +49,17 @@ namespace BlackJack {
             InitializeButtons();
 
             /******** Test Area *******/
+            HitCommand hitCommand = new HitCommand();
 
             Dealer.DealCards(Player);
             Console.WriteLine(Dealer.HighHandValue);
             Console.WriteLine(Player.HighHandValue);
-            Dealer.Hit(Player);
+            hitCommand.Execute(Dealer, Player);
+            hitCommand.Execute(Dealer);
+            
+            //Dealer.Hit(Player);
             Console.WriteLine(Player.HighHandValue);
-            Dealer.Hit(Dealer);
+           // Dealer.Hit(Dealer);
             Console.WriteLine(Dealer.HighHandValue);
             
 

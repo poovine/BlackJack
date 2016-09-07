@@ -8,9 +8,9 @@ using Microsoft.Xna.Framework.Input;
 
 namespace BlackJack {
     class InputManager {
-        private InputManager instance;
+        private static InputManager instance;
 
-        public InputManager Instance {
+        public static InputManager Instance {
             get {
                 if (instance == null) {
                     instance = new InputManager();
@@ -27,13 +27,18 @@ namespace BlackJack {
 
         public InputManager() {
             InputHandler = new InputHandler();
+           
+        }
+
+        public void LoadContent() {
             player = GameManager.Instance.Player;
             dealer = GameManager.Instance.Dealer;
         }
 
 
         public void Update(GameTime gameTime) {
-
+            var cmd = InputHandler.HandleInput();
+            cmd.Execute(dealer, player);          
         }
     }
 
