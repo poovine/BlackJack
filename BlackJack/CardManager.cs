@@ -20,14 +20,12 @@ namespace BlackJack {
                 return instance;
             }
         }
-
-        //public enum Suits { Spades, Clubs, Hearts, Diamonds };
+                
         private Texture2D cardSpriteSheet;
         private static Vector2 startingDeckPosition = new Vector2(1150, 150);
         public List<Card> Deck;
         private Player player;
         private Dealer dealer;
-
 
         private ContentManager content;
 
@@ -38,7 +36,6 @@ namespace BlackJack {
         public void LoadContent() {
             cardSpriteSheet = content.Load<Texture2D>("BJAssets\\playingCards");
             Deck = CreateDeck(cardSpriteSheet);
-
         }
 
         public void UnLoadContent() {
