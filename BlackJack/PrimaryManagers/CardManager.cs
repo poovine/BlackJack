@@ -20,16 +20,13 @@ namespace BlackJack {
                 return instance;
             }
         }
-                
+
         private static Vector2 startingDeckPosition = new Vector2(1150, 150);
 
-        private Texture2D cardSpriteSheet;
-        private Player player;
-        private Dealer dealer;
+        private Texture2D cardSpriteSheet;        
         private ContentManager content;
 
-        public List<Card> Deck { get; private set; }
-            
+        public List<Card> Deck { get; private set; }            
 
         public CardManager() {
             this.content = new ContentManager(Game1.content.ServiceProvider, "Content");
@@ -57,7 +54,7 @@ namespace BlackJack {
                 c.Draw(spriteBatch);
             }
         }
-
+        #region Create/Shuffle/Arrage Deck
         public static List<Card> CreateDeck(Texture2D playingCardTexture) {
             var unshuffled = new List<Card>();
             for (int i = 0; i < 6; i++) {
@@ -137,6 +134,7 @@ namespace BlackJack {
             }
             return new List<Card>(array);
         }
+        #endregion
     }
 }
 

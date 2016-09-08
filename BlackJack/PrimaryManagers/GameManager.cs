@@ -23,42 +23,41 @@ namespace BlackJack {
         }
 
         public ButtonManager ButtonManager { get { return buttonManager; } private set { } }
-        private ButtonManager buttonManager;
-
         public CommandManager CommandManager { get { return commandManager; } private set { } }
+        public PlayerManager PlayerManager { get { return playerManager; } private set { } }        
+
+        private ButtonManager buttonManager;
         private CommandManager commandManager;
-
-        public Player Player { get; private set; }
-        public Dealer Dealer { get; private set; }
-
-        private Texture2D playerTexture, dealerTexture;
-        private Vector2 playerPosition = new Vector2(600, 650);
-        private Vector2 dealerPosition = new Vector2(600,0);
+        private PlayerManager playerManager;
         private ContentManager content;
+
+
 
         public GameManager() {
             this.content = new ContentManager(Game1.content.ServiceProvider, "Content");
+            CardManager.Instance.LoadContent();
             commandManager = new CommandManager();
+            playerManager = new PlayerManager();
             buttonManager = new ButtonManager();
         }
 
         public void LoadContent() {
-            InitializePlayers();
+            PlayerManager.LoadContent();
             ButtonManager.LoadContent();            
 
             /******** Test Area *******/
             HitCommand hitCommand = new HitCommand();
 
-            Dealer.DealCards(Player);
-            Console.WriteLine(Dealer.HighHandValue);
-            Console.WriteLine(Player.HighHandValue);
-            CommandManager.Hit.Execute(Dealer);
-            CommandManager.Hit.Execute(Dealer, Player);
+            PlayerManager.Dealer.DealCards(PlayerManager.Player);
+            Console.WriteLine(PlayerManager.Dealer.HighHandValue);
+            Console.WriteLine(PlayerManager.Player.HighHandValue);
+            CommandManager.Hit.Execute(PlayerManager.Dealer);
+            CommandManager.Hit.Execute(PlayerManager.Dealer, PlayerManager.Player);
 
             //Dealer.Hit(Player);
-            Console.WriteLine(Player.HighHandValue);
+            Console.WriteLine(PlayerManager.Player.HighHandValue);
            // Dealer.Hit(Dealer);
-            Console.WriteLine(Dealer.HighHandValue);            
+            Console.WriteLine(PlayerManager.Dealer.HighHandValue);            
 
             /******Test Area ********/         
         }
@@ -68,26 +67,13 @@ namespace BlackJack {
         }
 
         public void Update(GameTime gameTime) {
-            
-        
+            CardManager.Instance.Update(gameTime);
+            PlayerManager.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch) {
-            DrawGameCharacters(spriteBatch);
-            ButtonManager.Draw(spriteBatch);
-            
+            PlayerManager.Draw(spriteBatch);
+            ButtonManager.Draw(spriteBatch);            
         } 
-
-        public void DrawGameCharacters(SpriteBatch spriteBatch) {
-            Player.Draw(spriteBatch);
-            Dealer.Draw(spriteBatch);
-        }
-
-        public void InitializePlayers() {
-            playerTexture = content.Load<Texture2D>("BJAssets\\player");
-            dealerTexture = content.Load<Texture2D>("BJAssets\\dealer");
-            Player = new Player(playerTexture, playerPosition, new Rectangle(0, 0, playerTexture.Width, playerTexture.Height));
-            Dealer = new Dealer(dealerTexture, dealerPosition, new Rectangle(0, 0, dealerTexture.Width, dealerTexture.Height));
-        }
     }
 }
