@@ -57,8 +57,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Button.cs" />
+    <Compile Include="ButtonManager.cs" />
     <Compile Include="Card.cs" />
     <Compile Include="CardManager.cs" />
+    <Compile Include="CommandManager.cs" />
     <Compile Include="Dealer.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="GameCharacter.cs" />

@@ -32,6 +32,29 @@ namespace BlackJack {
             base.Draw(spriteBatch);
         }
 
+        protected void DrawCurrentHand(SpriteBatch spriteBatch) {
+            int spacing = 60;
+            int yLocation = (typeof(Player) == this.GetType()) ? 400 : 175;
+           // if (this is Player) {
+                if (currentHand != null) {
+                    for (int i = 0; i < currentHand.Count; i++) {
+                        //change position later
+                        currentHand[i].Position = new Vector2(365 + spacing * i, yLocation);
+                        currentHand[i].Draw(spriteBatch);
+                    }
+                }
+          //  }
+            //if (this is Dealer) {
+            //    if (currentHand != null) {
+            //        for (int i = 0; i < currentHand.Count; i++) {
+            //            //change position later
+            //            currentHand[i].Position = new Vector2(365 + spacing * i, yLocation);
+            //            currentHand[i].Draw(spriteBatch);
+            //        }
+            //    }
+            //}
+        }
+
         protected void GetHandValues() {
             int totalLow = 0;
             int totalHigh = 0;

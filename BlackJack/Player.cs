@@ -42,15 +42,16 @@ namespace BlackJack {
             base.Draw(spriteBatch);
         }
 
-        private void DrawCurrentHand(SpriteBatch spriteBatch) {
-            if (currentHand != null) {
-                for (int i = 0; i < currentHand.Count; i++) {
-                    //change position later
-                    currentHand[i].Position = new Vector2(365 + 80 * i, 400);
-                    currentHand[i].Draw(spriteBatch);
-                }
-            }
-        }
+        //private void DrawCurrentHand(SpriteBatch spriteBatch) {
+        //    int spacing = 60;
+        //    if (currentHand != null) {
+        //        for (int i = 0; i < currentHand.Count; i++) {
+        //            //change position later
+        //            currentHand[i].Position = new Vector2(365 + spacing * i, 400);
+        //            currentHand[i].Draw(spriteBatch);
+        //        }
+        //    }
+        //}
 
         private void DrawChips(SpriteBatch spriteBatch) {
 
