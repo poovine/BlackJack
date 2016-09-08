@@ -14,7 +14,7 @@ namespace BlackJack {
         DoubleDownCommand doubleDownCommand = new DoubleDownCommand();
         SplitCommand splitCommand = new SplitCommand();
         BetCommand betCommand = new BetCommand();
-        DoNothing doNothing = new DoNothing();
+        DoNothingCommand doNothing = new DoNothingCommand();
         ICommand cmd = null;
 
         public ICommand HandleInput() {
@@ -49,35 +49,35 @@ namespace BlackJack {
         }
 
         private bool IsTouchingHitButton() {
-            var button = GameManager.Instance.HitButton;
+            var button = GameManager.Instance.ButtonManager.HitButton;
             Point mousePos = new Point(Mouse.GetState().X, Mouse.GetState().Y);
             Rectangle buttonShape = new Rectangle((int)button.Position.X, (int)button.Position.Y, button.SourceRectangle.Width, button.SourceRectangle.Height);
             return (buttonShape.Contains(mousePos));
         }
 
         private bool IsTouchingStandButton() {
-            var button = GameManager.Instance.StandButton;
+            var button = GameManager.Instance.ButtonManager.StandButton;
             Point mousePos = new Point(Mouse.GetState().X, Mouse.GetState().Y);
             Rectangle buttonShape = new Rectangle((int)button.Position.X, (int)button.Position.Y, button.SourceRectangle.Width, button.SourceRectangle.Height);
             return (buttonShape.Contains(mousePos));
         }
 
         private bool IsTouchingDoubleButton() {
-            var button = GameManager.Instance.DoubleButton;
+            var button = GameManager.Instance.ButtonManager.DoubleButton;
             Point mousePos = new Point(Mouse.GetState().X, Mouse.GetState().Y);
             Rectangle buttonShape = new Rectangle((int)button.Position.X, (int)button.Position.Y, button.SourceRectangle.Width, button.SourceRectangle.Height);
             return (buttonShape.Contains(mousePos));
         }
 
         private bool IsTouchingSplitButton() {
-            var button = GameManager.Instance.SplitButton;
+            var button = GameManager.Instance.ButtonManager.SplitButton;
             Point mousePos = new Point(Mouse.GetState().X, Mouse.GetState().Y);
             Rectangle buttonShape = new Rectangle((int)button.Position.X, (int)button.Position.Y, button.SourceRectangle.Width, button.SourceRectangle.Height);
             return (buttonShape.Contains(mousePos));
         }
 
         private bool IsTouchingBetButton() {
-            var button = GameManager.Instance.BetButton;
+            var button = GameManager.Instance.ButtonManager.BetButton;
             Point mousePos = new Point(Mouse.GetState().X, Mouse.GetState().Y);
             Rectangle buttonShape = new Rectangle((int)button.Position.X, (int)button.Position.Y, button.SourceRectangle.Width, button.SourceRectangle.Height);
             return (buttonShape.Contains(mousePos));

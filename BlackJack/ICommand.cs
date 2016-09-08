@@ -21,7 +21,8 @@ namespace BlackJack {
 
     class StandCommand : ICommand {
         public void Execute(Dealer dealer, Player player) {
-         
+            dealer.Hit(player);
+            dealer.Hit(player);
         }
 
         public void Execute(Dealer dealer) {
@@ -31,13 +32,29 @@ namespace BlackJack {
 
     class DoubleDownCommand : ICommand {
         public void Execute(Dealer dealer, Player player) {
-       
+            dealer.Hit(player);
+            dealer.Hit(player);
+            dealer.Hit(player);
+            dealer.Hit(player);
+        }
+
+        public void Execute(Dealer dealer) {
+
         }
     }
 
     class SplitCommand : ICommand {
         public void Execute(Dealer dealer, Player player) {
-     
+            dealer.Hit(player);
+            dealer.Hit(player);
+            dealer.Hit(player);
+            dealer.Hit(player);
+            dealer.Hit(player);
+            dealer.Hit(player);
+
+        }
+        public void Execute(Dealer dealer) {
+
         }
     }
 
@@ -45,11 +62,17 @@ namespace BlackJack {
         public void Execute(Dealer dealer, Player player) {
 
         }
+        public void Execute(Dealer dealer) {
+
+        }
     }
 
-    class DoNothing : ICommand {
+    class DoNothingCommand : ICommand {
         public void Execute(Dealer dealer, Player player) {
             
+        }
+        public void Execute(Dealer dealer) {
+
         }
     }
 }

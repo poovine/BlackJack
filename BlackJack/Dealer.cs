@@ -73,22 +73,12 @@ namespace BlackJack {
             var nextCard = CardManager.Instance.Deck[CardManager.Instance.Deck.Count - 1];
             nextCard.IsShowing = cardShowing;
             player.CurrentHand.Add(nextCard);
-
         }
 
         private void DealCardToDealer(bool cardShowing = true) {
             var nextCard = CardManager.Instance.Deck[CardManager.Instance.Deck.Count - 1];
             nextCard.IsShowing = cardShowing;
             this.CurrentHand.Add(nextCard);
-        }
-
-        private void DrawCurrentHand(SpriteBatch spriteBatch) {
-            if (currentHand != null) {
-                for (int i = 0; i < currentHand.Count; i++) {
-                    currentHand[i].Position = new Vector2(365 + 80 * i, 175);
-                    currentHand[i].Draw(spriteBatch);
-                }
-            }
         }
     }
 }
