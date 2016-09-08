@@ -18,20 +18,18 @@ namespace BlackJack {
                 return instance;
             }
         }
-
-        Player player;
-        Dealer dealer;      
+        private Player player;
+        private Dealer dealer;      
 
         public InputHandler InputHandler { get; private set; }
 
         public InputManager() {
-            InputHandler = new InputHandler();
-           
+            InputHandler = new InputHandler();           
         }
 
         public void LoadContent() {
-            player = GameManager.Instance.Player;
-            dealer = GameManager.Instance.Dealer;
+            player = GameManager.Instance.PlayerManager.Player;
+            dealer = GameManager.Instance.PlayerManager.Dealer;
         }
 
         public void Update(GameTime gameTime) {

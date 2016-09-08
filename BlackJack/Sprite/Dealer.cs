@@ -14,8 +14,7 @@ namespace BlackJack {
         public int LowHandValue {
             get {
                 if (currentHand != null) { GetHandValues(); }
-                return lowHandValue;
-                //sdfsdfsd 
+                return lowHandValue;                
             }
         }
 

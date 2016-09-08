@@ -19,8 +19,8 @@ namespace BlackJack {
 
         private int[] handValues = new int[2];
 
-        public GameCharacter(Texture2D characterTexture, Vector2 position, Rectangle maskRectangle) 
-                             : base (characterTexture, position, maskRectangle) {
+        public GameCharacter(Texture2D characterTexture, Vector2 position, Rectangle maskRectangle)
+                             : base(characterTexture, position, maskRectangle) {
 
         }
 
@@ -35,41 +35,25 @@ namespace BlackJack {
         protected void DrawCurrentHand(SpriteBatch spriteBatch) {
             int spacing = 60;
             int yLocation = (typeof(Player) == this.GetType()) ? 400 : 175;
-           // if (this is Player) {
-                if (currentHand != null) {
-                    for (int i = 0; i < currentHand.Count; i++) {
-                        //change position later
-                        currentHand[i].Position = new Vector2(365 + spacing * i, yLocation);
-                        currentHand[i].Draw(spriteBatch);
-                    }
+            // if (this is Player) {
+            if (currentHand != null) {
+                for (int i = 0; i < currentHand.Count; i++) {
+                    //change position later
+                    currentHand[i].Position = new Vector2(365 + spacing * i, yLocation);
+                    currentHand[i].Draw(spriteBatch);
                 }
-          //  }
-            //if (this is Dealer) {
-            //    if (currentHand != null) {
-            //        for (int i = 0; i < currentHand.Count; i++) {
-            //            //change position later
-            //            currentHand[i].Position = new Vector2(365 + spacing * i, yLocation);
-            //            currentHand[i].Draw(spriteBatch);
-            //        }
-            //    }
-            //}
+            }
         }
 
         protected void GetHandValues() {
             int totalLow = 0;
             int totalHigh = 0;
-            foreach(Card c in currentHand) {
+            foreach (Card c in currentHand) {
                 totalLow += c.LowValue;
                 totalHigh += c.HighValue;
             }
             lowHandValue = totalLow;
             highHandValue = totalHigh;
         }
-
-        
-
-
-
-
     }
 }

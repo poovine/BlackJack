@@ -12,8 +12,12 @@ namespace BlackJack {
         public Vector2 Position { get { return position; } }
         public Rectangle SourceRectangle { get { return sourceRectangle; } }
 
-        public Button(Texture2D buttonTexture, Vector2 buttonPosition, Rectangle sourceRectangle) : base (buttonTexture, buttonPosition, sourceRectangle) {
-            
+        public Button(Texture2D buttonTexture, Vector2 buttonPosition, Rectangle sourceRectangle,
+                      float scale = 1, float rotation = 0, float layerDepth = 1
+            ) : base (buttonTexture, buttonPosition, sourceRectangle) {
+            this.scale = scale;
+            this.rotation = rotation;
+            this.layerDepth = layerDepth;
         }
 
         public override void Update(GameTime gameTime) {
@@ -21,7 +25,7 @@ namespace BlackJack {
         }
 
         public override void Draw(SpriteBatch spriteBatch) {
-            spriteBatch.Draw(spriteTexture, position, sourceRectangle, Color.White);          
+            spriteBatch.Draw(spriteTexture, position, sourceRectangle, Color.White, rotation, origin, scale, SpriteEffects.None, layerDepth);          
             base.Draw(spriteBatch);
         }
     }
