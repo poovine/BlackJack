@@ -63,9 +63,8 @@ namespace BlackJack {
 
         public void DrawGame(SpriteBatch spriteBatch) {
             DrawTable(spriteBatch);
-            CardManager.Instance.DrawDeck(spriteBatch);
-            GameManager.Instance.DrawGameCharacters(spriteBatch);
-           // GameManager.Instance.DrawHands(spriteBatch);
+            CardManager.Instance.Draw(spriteBatch);
+            GameManager.Instance.Draw(spriteBatch);          
 
         }
 

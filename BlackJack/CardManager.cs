@@ -20,16 +20,16 @@ namespace BlackJack {
                 return instance;
             }
         }
-
-        //public enum Suits { Spades, Clubs, Hearts, Diamonds };
-        private Texture2D cardSpriteSheet;
+                
         private static Vector2 startingDeckPosition = new Vector2(1150, 150);
-        public List<Card> Deck;
+
+        private Texture2D cardSpriteSheet;
         private Player player;
         private Dealer dealer;
-
-
         private ContentManager content;
+
+        public List<Card> Deck { get; private set; }
+            
 
         public CardManager() {
             this.content = new ContentManager(Game1.content.ServiceProvider, "Content");
@@ -38,7 +38,6 @@ namespace BlackJack {
         public void LoadContent() {
             cardSpriteSheet = content.Load<Texture2D>("BJAssets\\playingCards");
             Deck = CreateDeck(cardSpriteSheet);
-
         }
 
         public void UnLoadContent() {
@@ -50,7 +49,7 @@ namespace BlackJack {
         }
 
         public void Draw(SpriteBatch spriteBatch) {
-
+            DrawDeck(spriteBatch);
         }
 
         public void DrawDeck(SpriteBatch spriteBatch) {
@@ -59,15 +58,9 @@ namespace BlackJack {
             }
         }
 
-
-
-
         public static List<Card> CreateDeck(Texture2D playingCardTexture) {
             var unshuffled = new List<Card>();
-
-
             for (int i = 0; i < 6; i++) {
-
                 unshuffled.Add(new Card(playingCardTexture, startingDeckPosition, new Rectangle(0, 0, 71, 100), 1, 11, "AS", "Ace of Spades", Card.Suits.Spades, Color.Black));
                 unshuffled.Add(new Card(playingCardTexture, startingDeckPosition, new Rectangle(76, 0, 71, 100), 2, 2, "2S", "Two of Spades", Card.Suits.Spades, Color.Black));
                 unshuffled.Add(new Card(playingCardTexture, startingDeckPosition, new Rectangle(76 * 2, 0, 71, 100), 3, 3, "3S", "Three of Spades", Card.Suits.Spades, Color.Black));
@@ -120,10 +113,8 @@ namespace BlackJack {
                 unshuffled.Add(new Card(playingCardTexture, startingDeckPosition, new Rectangle(76 * 10, 315, 71, 100), 10, 10, "JD", "Jack of Diamonds", Card.Suits.Diamonds, Color.Red));
                 unshuffled.Add(new Card(playingCardTexture, startingDeckPosition, new Rectangle(76 * 11, 315, 71, 100), 10, 10, "QD", "Queen of Diamonds", Card.Suits.Diamonds, Color.Red));
                 unshuffled.Add(new Card(playingCardTexture, startingDeckPosition, new Rectangle(76 * 12, 315, 71, 100), 10, 10, "KD", "King of Diamonds", Card.Suits.Diamonds, Color.Red));
-
             }
             return ArrangeDeck(Shuffle(unshuffled));
-
         }
 
         private static List<Card> ArrangeDeck(List<Card> cardList) {
@@ -139,12 +130,10 @@ namespace BlackJack {
             Card[] array = unshuffledDeck.ToArray();
             int n = array.Length;
             for (int i = 0; i < n; i++) {
-
                 int r = i + (int)(Game1.random.NextDouble() * (n - i));
                 Card t = array[r];
                 array[r] = array[i];
                 array[i] = t;
-
             }
             return new List<Card>(array);
         }

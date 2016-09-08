@@ -22,14 +22,20 @@ namespace BlackJack {
             }          
         }
 
-        public Player player;
-        public Dealer dealer;
+        public Player Player { get; private set; }
+        public Dealer Dealer { get; private set; }
+        
+        //try to move this somewhere else    
+        private Button hitButton, standButton, doubleButton, splitButton, betButton;
+        public Button HitButton { get { return hitButton; } }
+        public Button StandButton { get { return standButton; } }
+        public Button DoubleButton { get { return doubleButton; } }
+        public Button SplitButton { get { return splitButton; } }
+        public Button BetButton { get { return betButton; } }
 
-        private Texture2D playerTexture;
-        private Texture2D dealerTexture;
+        private Texture2D playerTexture, dealerTexture, buttonSprites;
         private Vector2 playerPosition = new Vector2(600, 650);
         private Vector2 dealerPosition = new Vector2(600,0);
-
         private ContentManager content;
 
         public GameManager() {
@@ -37,21 +43,24 @@ namespace BlackJack {
         }
 
         public void LoadContent() {
-            playerTexture = content.Load<Texture2D>("BJAssets\\player");
-            dealerTexture = content.Load<Texture2D>("BJAssets\\dealer");
-            player = new Player(playerTexture, playerPosition, new Rectangle(0,0,playerTexture.Width, playerTexture.Height));
-            dealer = new Dealer(dealerTexture, dealerPosition, new Rectangle(0,0, dealerTexture.Width, dealerTexture.Height));
+            InitializePlayers();
+            InitializeButtons();
 
-            dealer.DealCards(player);
-            Console.WriteLine(dealer.HighHandValue);
-            Console.WriteLine(player.HighHandValue);
-            dealer.Hit(player);
-            Console.WriteLine(player.HighHandValue);
-            dealer.Hit(dealer);
-            Console.WriteLine(dealer.HighHandValue);
+            /******** Test Area *******/
+            HitCommand hitCommand = new HitCommand();
+
+            Dealer.DealCards(Player);
+            Console.WriteLine(Dealer.HighHandValue);
+            Console.WriteLine(Player.HighHandValue);
+            hitCommand.Execute(Dealer, Player);
+            hitCommand.Execute(Dealer);
             
+            //Dealer.Hit(Player);
+            Console.WriteLine(Player.HighHandValue);
+           // Dealer.Hit(Dealer);
+            Console.WriteLine(Dealer.HighHandValue);            
 
-         
+            /******Test Area ********/         
         }
 
         public void UnLoadContent() {
@@ -64,16 +73,37 @@ namespace BlackJack {
         }
 
         public void Draw(SpriteBatch spriteBatch) {
-
-        }
-
-        public void DrawHands(SpriteBatch spriteBatch) {
-            
-        }
+            DrawGameCharacters(spriteBatch);
+            DrawGameButtons(spriteBatch);
+        } 
 
         public void DrawGameCharacters(SpriteBatch spriteBatch) {
-            player.Draw(spriteBatch);
-            dealer.Draw(spriteBatch);
+            Player.Draw(spriteBatch);
+            Dealer.Draw(spriteBatch);
+        }
+
+        public void InitializeButtons() {
+            buttonSprites = content.Load<Texture2D>("BJAssets\\bjbuttons");
+            hitButton = new Button(buttonSprites, new Vector2(475, 515), new Rectangle(0, 0, 90, 65));
+            standButton = new Button(buttonSprites, new Vector2(720, 515), new Rectangle(90, 0, 90, 65));
+            doubleButton = new Button(buttonSprites, new Vector2(475, 570), new Rectangle(180, 0, 90, 65));
+            splitButton = new Button(buttonSprites, new Vector2(720, 570), new Rectangle(270, 0, 90, 65));
+            betButton = new Button(buttonSprites, new Vector2(720, 650), new Rectangle(360, 0, 90, 65));
+        }
+
+        public void InitializePlayers() {
+            playerTexture = content.Load<Texture2D>("BJAssets\\player");
+            dealerTexture = content.Load<Texture2D>("BJAssets\\dealer");
+            Player = new Player(playerTexture, playerPosition, new Rectangle(0, 0, playerTexture.Width, playerTexture.Height));
+            Dealer = new Dealer(dealerTexture, dealerPosition, new Rectangle(0, 0, dealerTexture.Width, dealerTexture.Height));
+        }
+
+        public void DrawGameButtons(SpriteBatch spriteBatch) {
+            hitButton.Draw(spriteBatch);
+            standButton.Draw(spriteBatch);
+            doubleButton.Draw(spriteBatch);
+            splitButton.Draw(spriteBatch);
+            betButton.Draw(spriteBatch);
         }
     }
 }

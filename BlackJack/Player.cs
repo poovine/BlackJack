@@ -9,6 +9,8 @@ using Microsoft.Xna.Framework.Graphics;
 namespace BlackJack {
     class Player : GameCharacter {
 
+        Texture2D chipsTexture;
+
         public int ChipCount { get; set; }
         public int LowHandValue {
             get {
@@ -16,7 +18,6 @@ namespace BlackJack {
                 return lowHandValue;
             }
         }
-
 
         public int HighHandValue {
             get {
@@ -37,6 +38,7 @@ namespace BlackJack {
         public override void Draw(SpriteBatch spriteBatch) {
             spriteBatch.Draw(spriteTexture, position, Color.White);
             DrawCurrentHand(spriteBatch);
+            DrawChips(spriteBatch);
             base.Draw(spriteBatch);
         }
 
@@ -44,10 +46,14 @@ namespace BlackJack {
             if (currentHand != null) {
                 for (int i = 0; i < currentHand.Count; i++) {
                     //change position later
-                    currentHand[i].Position = new Vector2(365 + 80 * i, 450);
+                    currentHand[i].Position = new Vector2(365 + 80 * i, 400);
                     currentHand[i].Draw(spriteBatch);
                 }
             }
+        }
+
+        private void DrawChips(SpriteBatch spriteBatch) {
+
         }
     }
 }

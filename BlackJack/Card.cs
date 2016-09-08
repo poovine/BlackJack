@@ -32,8 +32,7 @@ namespace BlackJack {
             this.suit = suit;                        
         }   
 
-        public override void Update(GameTime gameTime) {
-             
+        public override void Update(GameTime gameTime) {             
         }
 
         public override void Draw(SpriteBatch spriteBatch) {
@@ -42,7 +41,6 @@ namespace BlackJack {
             }
             else
                 spriteBatch.Draw(spriteTexture, position, new Rectangle(76 * 13, 210, 71, 100), Color.White);
-
         }
 
     }
