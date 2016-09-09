@@ -8,22 +8,8 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace BlackJack {
     class Dealer : GameCharacter {
-
-        
-
-        //public int LowHandValue {
-        //    get {
-        //        if (currentHand != null) { GetHandValues(); }
-        //        return lowHandValue;                
-        //    }
-        //}
-
-        //public int HighHandValue {
-        //    get {
-        //        if (currentHand != null) { GetHandValues(); }
-        //        return highHandValue;
-        //    }
-        //}              
+    
+        public bool IsStanding { get; set; }
 
         public Dealer(Texture2D playerTexture, Vector2 position, Rectangle maskRectangle)
                         : base(playerTexture, position, maskRectangle) {

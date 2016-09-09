@@ -27,24 +27,21 @@ namespace BlackJack {
 
     class StandCommand : ICommand {
         public void Execute(Dealer dealer, Player player) {
-            dealer.Hit(player);
-            dealer.Hit(player);
+
         }
 
         public void Execute(Dealer dealer) {
-
+            dealer.IsStanding = true;
         }
         public void Execute(Player player) {
-
+            player.IsStanding = true;
         }
     }
 
     class DoubleDownCommand : ICommand {
         public void Execute(Dealer dealer, Player player) {
             dealer.Hit(player);
-            dealer.Hit(player);
-            dealer.Hit(player);
-            dealer.Hit(player);
+            player.IsStanding = true;
         }
 
         public void Execute(Dealer dealer) {
@@ -113,13 +110,13 @@ namespace BlackJack {
         public void Execute(Player player) {
             if (GameManager.SubBet <= player.BetAmount) {
                 player.BetAmount -= GameManager.SubBet;
-            }         
+            }
         }
     }
 
     class DoNothingCommand : ICommand {
         public void Execute(Dealer dealer, Player player) {
-            
+
         }
         public void Execute(Dealer dealer) {
 

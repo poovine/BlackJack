@@ -14,6 +14,7 @@ namespace BlackJack {
         protected List<Vector2> currentHandCardPositions = new List<Vector2>();
         protected string Name { get; set; }
         protected int lowHandValue, highHandValue;
+        //protected bool isStanding;
 
         public List<Card> CurrentHand { get { return currentHand; } }
 

@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
+using Microsoft.Xna.Framework.Input;
 
 namespace BlackJack {
 
@@ -22,7 +23,7 @@ namespace BlackJack {
             }
         }
 
-        private enum GamePlay {
+        public enum GamePlayState {
             PlaceBets, //pre cards dealt phase...place bets...once bet placed...state changes to deal cards...only bet buttons active...hit/stand are not
             DealCards, //dealer and player have 2 cards each...check for blackjack...if no blackjack go to player action...if blackjack then get winner           
             PlayerAction, //player able to use hit/stand buttons...bet buttons turned off...after every hit check for bust...
@@ -40,6 +41,8 @@ namespace BlackJack {
         private CommandManager commandManager;
         private PlayerManager playerManager;
         private ContentManager content;
+
+        public GamePlayState gamePlayState = GamePlayState.PlaceBets;
 
         public static int SubBet;
 
@@ -83,6 +86,30 @@ namespace BlackJack {
         public void Update(GameTime gameTime) {
             CardManager.Instance.Update(gameTime);
             PlayerManager.Update(gameTime);
+            ButtonManager.Update(gameTime);
+            
+            /****/
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Space)) {
+                gamePlayState = GamePlayState.PlayerAction;
+            }
+
+            else if (Keyboard.GetState().IsKeyDown(Keys.Up)) {
+                playerManager.Player.ChipCount += 100;
+            }
+
+            else if (Keyboard.GetState().IsKeyDown(Keys.Down)) {
+                playerManager.Player.ChipCount -= 100;
+            }
+
+           
+
+
+
+
+            /*****/
+
+            
         }
 
         public void Draw(SpriteBatch spriteBatch) {

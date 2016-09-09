@@ -12,7 +12,7 @@ namespace BlackJack {
         protected Rectangle sourceRectangle;
         protected Texture2D spriteTexture;
         protected float scale, rotation, layerDepth;
-        protected bool isActive, isVisible = true;                 
+        protected bool isActive = true, isVisible = true;                 
 
         public Sprite(Texture2D spriteTexture, Vector2 position, Rectangle sourceRectangle) {
             this.spriteTexture = spriteTexture;
