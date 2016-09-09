@@ -9,9 +9,9 @@ using Microsoft.Xna.Framework.Graphics;
 namespace BlackJack {
     class Player : GameCharacter {
 
-        Texture2D chipsTexture;
+        public int ChipCount { get; set; } = 100;
+        public int BetAmount { get; set; } = 0;
 
-        public int ChipCount { get; set; }
         public int LowHandValue {
             get {
                 if (currentHand != null) { GetHandValues(); }
@@ -25,37 +25,20 @@ namespace BlackJack {
                 return highHandValue;
             }
         }
-       
+
         public Player(Texture2D playerTexture, Vector2 position, Rectangle maskRectangle)
-                        : base(playerTexture, position, maskRectangle) {
-            ChipCount = 100000;
+                        : base(playerTexture, position, maskRectangle) {           
         }
 
         public override void Update(GameTime gameTime) {
-            Console.WriteLine(this.ChipCount);
+            Console.WriteLine(this.BetAmount);            
             base.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch) {
             spriteBatch.Draw(spriteTexture, position, Color.White);
             DrawCurrentHand(spriteBatch);
-            DrawChips(spriteBatch);
             base.Draw(spriteBatch);
-        }
-
-        //private void DrawCurrentHand(SpriteBatch spriteBatch) {
-        //    int spacing = 60;
-        //    if (currentHand != null) {
-        //        for (int i = 0; i < currentHand.Count; i++) {
-        //            //change position later
-        //            currentHand[i].Position = new Vector2(365 + spacing * i, 400);
-        //            currentHand[i].Draw(spriteBatch);
-        //        }
-        //    }
-        //}
-
-        private void DrawChips(SpriteBatch spriteBatch) {
-
         }
     }
 }

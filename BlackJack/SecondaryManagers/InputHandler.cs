@@ -53,72 +53,72 @@ namespace BlackJack {
 
             else if (prevMouseState.LeftButton == ButtonState.Released && currMouseState.LeftButton == ButtonState.Pressed 
                 && IsTouchingButton(GameManager.Instance.ButtonManager.TenButton)) {
-                GameManager.BetAdd = 10;
+                GameManager.SubBet = 10;
                 cmd = addCommand;
             }
 
             else if (prevMouseState.RightButton == ButtonState.Released && currMouseState.RightButton == ButtonState.Pressed 
                 && IsTouchingButton(GameManager.Instance.ButtonManager.TenButton)) {
-                GameManager.BetSubstract = 10;
+                GameManager.SubBet = 10;
                 cmd = subtractCommand;
             }
 
             else if (prevMouseState.LeftButton == ButtonState.Released && currMouseState.LeftButton == ButtonState.Pressed 
                 && IsTouchingButton(GameManager.Instance.ButtonManager.HundredButton)) {
-                GameManager.BetAdd = 100;
+                GameManager.SubBet = 100;
                 cmd = addCommand;
             }
 
             else if (prevMouseState.RightButton == ButtonState.Released && currMouseState.RightButton == ButtonState.Pressed 
                 && IsTouchingButton(GameManager.Instance.ButtonManager.HundredButton)) {
-                GameManager.BetSubstract = 100;
+                GameManager.SubBet = 100;
                 cmd = subtractCommand;
             }
 
             else if (prevMouseState.LeftButton == ButtonState.Released && currMouseState.LeftButton == ButtonState.Pressed 
                 && IsTouchingButton(GameManager.Instance.ButtonManager.FiveHundredButton)) {
-                GameManager.BetAdd = 500;
+                GameManager.SubBet = 500;
                 cmd = addCommand;
             }
 
             else if (prevMouseState.RightButton == ButtonState.Released && currMouseState.RightButton == ButtonState.Pressed 
                 && IsTouchingButton(GameManager.Instance.ButtonManager.FiveHundredButton)) {
-                GameManager.BetSubstract = 500;
+                GameManager.SubBet = 500;
                 cmd = subtractCommand;
             }
 
             else if (prevMouseState.LeftButton == ButtonState.Released && currMouseState.LeftButton == ButtonState.Pressed 
                 && IsTouchingButton(GameManager.Instance.ButtonManager.OneThousandButton)) {
-                GameManager.BetAdd = 1000;
+                GameManager.SubBet = 1000;
                 cmd = addCommand;
             }
 
             else if (prevMouseState.RightButton == ButtonState.Released && currMouseState.RightButton == ButtonState.Pressed 
                 && IsTouchingButton(GameManager.Instance.ButtonManager.OneThousandButton)) {
-                GameManager.BetSubstract = 1000;
+                GameManager.SubBet = 1000;
                 cmd = subtractCommand;
             }
 
             else if (prevMouseState.LeftButton == ButtonState.Released && currMouseState.LeftButton == ButtonState.Pressed 
                 && IsTouchingButton(GameManager.Instance.ButtonManager.FiveThousandButton)) {
-                GameManager.BetAdd = 5000;
+                GameManager.SubBet = 5000;
                 cmd = addCommand;
             }
 
             else if (prevMouseState.RightButton == ButtonState.Released && currMouseState.RightButton == ButtonState.Pressed 
                 && IsTouchingButton(GameManager.Instance.ButtonManager.FiveThousandButton)) {
-                GameManager.BetSubstract = 5000;
+                GameManager.SubBet = 5000;
                 cmd = subtractCommand;
             }
             else if (prevMouseState.LeftButton == ButtonState.Released && currMouseState.LeftButton == ButtonState.Pressed 
                 && IsTouchingButton(GameManager.Instance.ButtonManager.TenThousandButton)) {
-                GameManager.BetAdd = 10000;
+                GameManager.SubBet = 10000;
                 cmd = addCommand;
             }
 
             else if (prevMouseState.RightButton == ButtonState.Released && currMouseState.RightButton == ButtonState.Pressed 
                 && IsTouchingButton(GameManager.Instance.ButtonManager.TenThousandButton)) {
-                GameManager.BetSubstract = 10000;
+                GameManager.SubBet = 10000;
                 cmd = subtractCommand;                
             }
             else {

@@ -25,7 +25,6 @@ namespace BlackJack {
         public Button FiveThousandButton { get { return fiveThousandButton; } }
         public Button TenThousandButton { get { return tenThousandButton; } }
 
-
         private Texture2D buttonSprites, chipSprites;
 
         private ContentManager content;
@@ -35,7 +34,7 @@ namespace BlackJack {
         }
         public void InitializeButtons() {
             buttonSprites = content.Load<Texture2D>("BJAssets\\bjbuttons");
-            chipSprites = content.Load<Texture2D>("BJAssets\\chipsSheet2");
+            chipSprites = content.Load<Texture2D>("BJAssets\\chipsSheet3");
             hitButton = new Button(buttonSprites, new Vector2(475, 515), new Rectangle(0, 0, 90, 65));
             standButton = new Button(buttonSprites, new Vector2(720, 515), new Rectangle(90, 0, 90, 65));
             doubleButton = new Button(buttonSprites, new Vector2(475, 570), new Rectangle(180, 0, 90, 65));
