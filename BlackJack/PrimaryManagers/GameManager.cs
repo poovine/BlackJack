@@ -31,6 +31,9 @@ namespace BlackJack {
         private PlayerManager playerManager;
         private ContentManager content;
 
+        public static int BetSubstract;
+        public static int BetAdd;
+
 
 
         public GameManager() {

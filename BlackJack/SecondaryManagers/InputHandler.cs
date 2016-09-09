@@ -14,6 +14,11 @@ namespace BlackJack {
         DoubleDownCommand doubleDownCommand = new DoubleDownCommand();
         SplitCommand splitCommand = new SplitCommand();
         BetCommand betCommand = new BetCommand();
+
+        //work in progress
+        AddToBet addCommand = new AddToBet();
+        SubstractFromBet subtractCommand = new SubstractFromBet();
+        
         DoNothingCommand doNothing = new DoNothingCommand();
         ICommand cmd = null;
 
@@ -21,26 +26,101 @@ namespace BlackJack {
 
             currMouseState = Mouse.GetState();
             //try to use delegates here
-            if (prevMouseState.LeftButton == ButtonState.Released && currMouseState.LeftButton == ButtonState.Pressed && IsTouchingHitButton()) {
+            if (prevMouseState.LeftButton == ButtonState.Released && currMouseState.LeftButton == ButtonState.Pressed
+                && IsTouchingButton(GameManager.Instance.ButtonManager.HitButton)) {
                 cmd = hitCommand;
             }
 
-            else if (prevMouseState.LeftButton == ButtonState.Released && currMouseState.LeftButton == ButtonState.Pressed && IsTouchingStandButton()) {
+            else if (prevMouseState.LeftButton == ButtonState.Released && currMouseState.LeftButton == ButtonState.Pressed 
+                && IsTouchingButton(GameManager.Instance.ButtonManager.StandButton)) {
                 cmd = standCommand;
             }
 
-            else if (prevMouseState.LeftButton == ButtonState.Released && currMouseState.LeftButton == ButtonState.Pressed && IsTouchingDoubleButton()) {
+            else if (prevMouseState.LeftButton == ButtonState.Released && currMouseState.LeftButton == ButtonState.Pressed 
+                && IsTouchingButton(GameManager.Instance.ButtonManager.DoubleButton)) {
                 cmd = doubleDownCommand;
             }
 
-            else if (prevMouseState.LeftButton == ButtonState.Released && currMouseState.LeftButton == ButtonState.Pressed && IsTouchingSplitButton()) {
+            else if (prevMouseState.LeftButton == ButtonState.Released && currMouseState.LeftButton == ButtonState.Pressed 
+                && IsTouchingButton(GameManager.Instance.ButtonManager.SplitButton)) {
                 cmd = splitCommand;
             }
 
-            else if (prevMouseState.LeftButton == ButtonState.Released && currMouseState.LeftButton == ButtonState.Pressed && IsTouchingBetButton()) {
+            else if (prevMouseState.LeftButton == ButtonState.Released && currMouseState.LeftButton == ButtonState.Pressed 
+                && IsTouchingButton(GameManager.Instance.ButtonManager.BetButton)) {
                 cmd = betCommand;
             }
 
+            else if (prevMouseState.LeftButton == ButtonState.Released && currMouseState.LeftButton == ButtonState.Pressed 
+                && IsTouchingButton(GameManager.Instance.ButtonManager.TenButton)) {
+                GameManager.BetAdd = 10;
+                cmd = addCommand;
+            }
+
+            else if (prevMouseState.RightButton == ButtonState.Released && currMouseState.RightButton == ButtonState.Pressed 
+                && IsTouchingButton(GameManager.Instance.ButtonManager.TenButton)) {
+                GameManager.BetSubstract = 10;
+                cmd = subtractCommand;
+            }
+
+            else if (prevMouseState.LeftButton == ButtonState.Released && currMouseState.LeftButton == ButtonState.Pressed 
+                && IsTouchingButton(GameManager.Instance.ButtonManager.HundredButton)) {
+                GameManager.BetAdd = 100;
+                cmd = addCommand;
+            }
+
+            else if (prevMouseState.RightButton == ButtonState.Released && currMouseState.RightButton == ButtonState.Pressed 
+                && IsTouchingButton(GameManager.Instance.ButtonManager.HundredButton)) {
+                GameManager.BetSubstract = 100;
+                cmd = subtractCommand;
+            }
+
+            else if (prevMouseState.LeftButton == ButtonState.Released && currMouseState.LeftButton == ButtonState.Pressed 
+                && IsTouchingButton(GameManager.Instance.ButtonManager.FiveHundredButton)) {
+                GameManager.BetAdd = 500;
+                cmd = addCommand;
+            }
+
+            else if (prevMouseState.RightButton == ButtonState.Released && currMouseState.RightButton == ButtonState.Pressed 
+                && IsTouchingButton(GameManager.Instance.ButtonManager.FiveHundredButton)) {
+                GameManager.BetSubstract = 500;
+                cmd = subtractCommand;
+            }
+
+            else if (prevMouseState.LeftButton == ButtonState.Released && currMouseState.LeftButton == ButtonState.Pressed 
+                && IsTouchingButton(GameManager.Instance.ButtonManager.OneThousandButton)) {
+                GameManager.BetAdd = 1000;
+                cmd = addCommand;
+            }
+
+            else if (prevMouseState.RightButton == ButtonState.Released && currMouseState.RightButton == ButtonState.Pressed 
+                && IsTouchingButton(GameManager.Instance.ButtonManager.OneThousandButton)) {
+                GameManager.BetSubstract = 1000;
+                cmd = subtractCommand;
+            }
+
+            else if (prevMouseState.LeftButton == ButtonState.Released && currMouseState.LeftButton == ButtonState.Pressed 
+                && IsTouchingButton(GameManager.Instance.ButtonManager.FiveThousandButton)) {
+                GameManager.BetAdd = 5000;
+                cmd = addCommand;
+            }
+
+            else if (prevMouseState.RightButton == ButtonState.Released && currMouseState.RightButton == ButtonState.Pressed 
+                && IsTouchingButton(GameManager.Instance.ButtonManager.FiveThousandButton)) {
+                GameManager.BetSubstract = 5000;
+                cmd = subtractCommand;
+            }
+            else if (prevMouseState.LeftButton == ButtonState.Released && currMouseState.LeftButton == ButtonState.Pressed 
+                && IsTouchingButton(GameManager.Instance.ButtonManager.TenThousandButton)) {
+                GameManager.BetAdd = 10000;
+                cmd = addCommand;
+            }
+
+            else if (prevMouseState.RightButton == ButtonState.Released && currMouseState.RightButton == ButtonState.Pressed 
+                && IsTouchingButton(GameManager.Instance.ButtonManager.TenThousandButton)) {
+                GameManager.BetSubstract = 10000;
+                cmd = subtractCommand;                
+            }
             else {
                 cmd = doNothing;
             }
@@ -48,36 +128,7 @@ namespace BlackJack {
             return cmd;
         }
 
-        private bool IsTouchingHitButton() {
-            var button = GameManager.Instance.ButtonManager.HitButton;
-            Point mousePos = new Point(Mouse.GetState().X, Mouse.GetState().Y);
-            Rectangle buttonShape = new Rectangle((int)button.Position.X, (int)button.Position.Y, button.SourceRectangle.Width, button.SourceRectangle.Height);
-            return (buttonShape.Contains(mousePos));
-        }
-
-        private bool IsTouchingStandButton() {
-            var button = GameManager.Instance.ButtonManager.StandButton;
-            Point mousePos = new Point(Mouse.GetState().X, Mouse.GetState().Y);
-            Rectangle buttonShape = new Rectangle((int)button.Position.X, (int)button.Position.Y, button.SourceRectangle.Width, button.SourceRectangle.Height);
-            return (buttonShape.Contains(mousePos));
-        }
-
-        private bool IsTouchingDoubleButton() {
-            var button = GameManager.Instance.ButtonManager.DoubleButton;
-            Point mousePos = new Point(Mouse.GetState().X, Mouse.GetState().Y);
-            Rectangle buttonShape = new Rectangle((int)button.Position.X, (int)button.Position.Y, button.SourceRectangle.Width, button.SourceRectangle.Height);
-            return (buttonShape.Contains(mousePos));
-        }
-
-        private bool IsTouchingSplitButton() {
-            var button = GameManager.Instance.ButtonManager.SplitButton;
-            Point mousePos = new Point(Mouse.GetState().X, Mouse.GetState().Y);
-            Rectangle buttonShape = new Rectangle((int)button.Position.X, (int)button.Position.Y, button.SourceRectangle.Width, button.SourceRectangle.Height);
-            return (buttonShape.Contains(mousePos));
-        }
-
-        private bool IsTouchingBetButton() {
-            var button = GameManager.Instance.ButtonManager.BetButton;
+        private bool IsTouchingButton(Button button) {
             Point mousePos = new Point(Mouse.GetState().X, Mouse.GetState().Y);
             Rectangle buttonShape = new Rectangle((int)button.Position.X, (int)button.Position.Y, button.SourceRectangle.Width, button.SourceRectangle.Height);
             return (buttonShape.Contains(mousePos));

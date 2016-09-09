@@ -28,10 +28,11 @@ namespace BlackJack {
        
         public Player(Texture2D playerTexture, Vector2 position, Rectangle maskRectangle)
                         : base(playerTexture, position, maskRectangle) {
-
+            ChipCount = 100000;
         }
 
         public override void Update(GameTime gameTime) {
+            Console.WriteLine(this.ChipCount);
             base.Update(gameTime);
         }
 

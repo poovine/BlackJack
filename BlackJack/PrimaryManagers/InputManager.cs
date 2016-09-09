@@ -34,7 +34,8 @@ namespace BlackJack {
 
         public void Update(GameTime gameTime) {
             var cmd = InputHandler.HandleInput();
-            cmd.Execute(dealer, player);          
+            cmd.Execute(dealer, player);
+            cmd.Execute(player);        
         }
     }
 
