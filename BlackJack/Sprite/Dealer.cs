@@ -11,19 +11,19 @@ namespace BlackJack {
 
         
 
-        public int LowHandValue {
-            get {
-                if (currentHand != null) { GetHandValues(); }
-                return lowHandValue;                
-            }
-        }
+        //public int LowHandValue {
+        //    get {
+        //        if (currentHand != null) { GetHandValues(); }
+        //        return lowHandValue;                
+        //    }
+        //}
 
-        public int HighHandValue {
-            get {
-                if (currentHand != null) { GetHandValues(); }
-                return highHandValue;
-            }
-        }              
+        //public int HighHandValue {
+        //    get {
+        //        if (currentHand != null) { GetHandValues(); }
+        //        return highHandValue;
+        //    }
+        //}              
 
         public Dealer(Texture2D playerTexture, Vector2 position, Rectangle maskRectangle)
                         : base(playerTexture, position, maskRectangle) {

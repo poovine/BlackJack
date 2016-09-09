@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Content;
 
 namespace BlackJack {
     abstract class Sprite {
@@ -13,9 +12,7 @@ namespace BlackJack {
         protected Rectangle sourceRectangle;
         protected Texture2D spriteTexture;
         protected float scale, rotation, layerDepth;
-        protected bool isActive, isVisible = true;
-        protected ContentManager content;
-             
+        protected bool isActive, isVisible = true;                 
 
         public Sprite(Texture2D spriteTexture, Vector2 position, Rectangle sourceRectangle) {
             this.spriteTexture = spriteTexture;

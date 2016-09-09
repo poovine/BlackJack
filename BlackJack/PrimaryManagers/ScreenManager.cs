@@ -22,7 +22,7 @@ namespace BlackJack {
         }
 
         private ContentManager content;
-        public Texture2D tableTexture;
+        private Texture2D tableTexture;
         public Vector2 tablePosition = Vector2.Zero;
 
         public ScreenManager() {

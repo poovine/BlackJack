@@ -11,8 +11,8 @@ namespace BlackJack {
     /// </summary>
     public class Game1 : Game {
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;   
-                     
+        SpriteBatch spriteBatch;
+
         public static ContentManager content;
         public static Random random = new Random();
         /**********************************
@@ -20,7 +20,7 @@ namespace BlackJack {
         ***********************************/
 
 
-        
+
         //Texture2D buttonBox;
 
 
@@ -40,33 +40,26 @@ namespace BlackJack {
         public Game1() {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            content = new ContentManager(Content.ServiceProvider, "Content");
+            content = Content;
         }
 
-
         protected override void Initialize() {
-            // TODO: Add your initialization logic here
             graphics.PreferredBackBufferWidth = screenWidth;
             graphics.PreferredBackBufferHeight = screenHeight;
             IsMouseVisible = true;
             gameState = GameState.Game;
-            //CardManager.Instance.LoadContent();
             GameManager.Instance.LoadContent();
             ScreenManager.Instance.LoadContent();
             InputManager.Instance.LoadContent();
             base.Initialize();
         }
 
-
-        protected override void LoadContent() {       
+        protected override void LoadContent() {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-         
-          
-
         }
 
         protected override void UnloadContent() {
-            
+
         }
 
         protected override void Update(GameTime gameTime) {
@@ -74,28 +67,24 @@ namespace BlackJack {
                 Exit();
 
             switch (gameState) {
-                case GameState.MainMenu:                                       
+                case GameState.MainMenu:
                     break;
                 case GameState.Game:
                     InputManager.Instance.Update(gameTime);
                     GameManager.Instance.Update(gameTime);
                     ScreenManager.Instance.Update(gameTime);
-                   // CardManager.Instance.Update(gameTime);
                     break;
                 case GameState.SubMenu:
                     break;
-            }          
+            }
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime) {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
-            ScreenManager.Instance.Draw(spriteBatch);
-           
-    
-            
-            spriteBatch.End();           
+            ScreenManager.Instance.Draw(spriteBatch); 
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }

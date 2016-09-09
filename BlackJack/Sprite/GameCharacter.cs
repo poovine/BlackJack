@@ -17,6 +17,20 @@ namespace BlackJack {
 
         public List<Card> CurrentHand { get { return currentHand; } }
 
+        public int LowHandValue {
+            get {
+                if (currentHand != null) { GetHandValues(); }
+                return lowHandValue;
+            }
+        }
+
+        public int HighHandValue {
+            get {
+                if (currentHand != null) { GetHandValues(); }
+                return highHandValue;
+            }
+        }
+
         private int[] handValues = new int[2];
 
         public GameCharacter(Texture2D characterTexture, Vector2 position, Rectangle maskRectangle)
@@ -34,8 +48,8 @@ namespace BlackJack {
 
         protected void DrawCurrentHand(SpriteBatch spriteBatch) {
             int spacing = 60;
+            //if Player draw at y = 400, else draw the Dealear at 175;
             int yLocation = (typeof(Player) == this.GetType()) ? 400 : 175;
-            // if (this is Player) {
             if (currentHand != null) {
                 for (int i = 0; i < currentHand.Count; i++) {
                     //change position later

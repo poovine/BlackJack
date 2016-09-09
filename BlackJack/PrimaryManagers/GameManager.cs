@@ -22,6 +22,16 @@ namespace BlackJack {
             }
         }
 
+        private enum GamePlay {
+            PlaceBets, //pre cards dealt phase...place bets...once bet placed...state changes to deal cards...only bet buttons active...hit/stand are not
+            DealCards, //dealer and player have 2 cards each...check for blackjack...if no blackjack go to player action...if blackjack then get winner           
+            PlayerAction, //player able to use hit/stand buttons...bet buttons turned off...after every hit check for bust...
+            //hit until bust then go to GetWinner, hit until stand then go to DealerAction, DoubleDown (effectively 1 hit then stand)...if hit causes bust, Get winner,
+            //if hit doesnt cause bust go to dealer action...split...create 2 hands...repeat player actions on one hand and then the other...stand, go to dealer Action.
+            DealerAction, //go through dealer AI...if dealer hit, check for bust each time....if bust ever go to get winner...if dealer stand...go to get winner.../all buttons deactivated at this point.
+            GetWinner//check winner logic...transfer won or lost chips. clear the table of cards...back to place bets
+        }
+
         public ButtonManager ButtonManager { get { return buttonManager; } private set { } }
         public CommandManager CommandManager { get { return commandManager; } private set { } }
         public PlayerManager PlayerManager { get { return playerManager; } private set { } }
@@ -51,13 +61,17 @@ namespace BlackJack {
             PlayerManager.Dealer.DealCards(PlayerManager.Player);
             Console.WriteLine(PlayerManager.Dealer.HighHandValue);
             Console.WriteLine(PlayerManager.Player.HighHandValue);
-            CommandManager.Hit.Execute(PlayerManager.Dealer);
-            CommandManager.Hit.Execute(PlayerManager.Dealer, PlayerManager.Player);
+           // CommandManager.Hit.Execute(PlayerManager.Dealer);
+           // CommandManager.Hit.Execute(PlayerManager.Dealer, PlayerManager.Player);
 
             //Dealer.Hit(Player);
             Console.WriteLine(PlayerManager.Player.HighHandValue);
+            Console.WriteLine(BlackJackHandler.IsBlackJack(PlayerManager.Player));
             // Dealer.Hit(Dealer);
             Console.WriteLine(PlayerManager.Dealer.HighHandValue);
+            Console.WriteLine(BlackJackHandler.IsBlackJack(PlayerManager.Dealer));
+
+            Console.WriteLine(BlackJackHandler.CheckWinner(PlayerManager.Dealer, PlayerManager.Player));
 
             /******Test Area ********/
         }
