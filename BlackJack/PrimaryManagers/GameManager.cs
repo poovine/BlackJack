@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Content;
 
 
 namespace BlackJack {
-    
+
     class GameManager {
         private static GameManager instance;
 
@@ -19,22 +19,19 @@ namespace BlackJack {
                     instance = new GameManager();
                 }
                 return instance;
-            }          
+            }
         }
 
         public ButtonManager ButtonManager { get { return buttonManager; } private set { } }
         public CommandManager CommandManager { get { return commandManager; } private set { } }
-        public PlayerManager PlayerManager { get { return playerManager; } private set { } }        
+        public PlayerManager PlayerManager { get { return playerManager; } private set { } }
 
         private ButtonManager buttonManager;
         private CommandManager commandManager;
         private PlayerManager playerManager;
         private ContentManager content;
 
-        public static int BetSubstract;
-        public static int BetAdd;
-
-
+        public static int SubBet;
 
         public GameManager() {
             this.content = new ContentManager(Game1.content.ServiceProvider, "Content");
@@ -46,7 +43,7 @@ namespace BlackJack {
 
         public void LoadContent() {
             PlayerManager.LoadContent();
-            ButtonManager.LoadContent();            
+            ButtonManager.LoadContent();
 
             /******** Test Area *******/
             HitCommand hitCommand = new HitCommand();
@@ -59,10 +56,10 @@ namespace BlackJack {
 
             //Dealer.Hit(Player);
             Console.WriteLine(PlayerManager.Player.HighHandValue);
-           // Dealer.Hit(Dealer);
-            Console.WriteLine(PlayerManager.Dealer.HighHandValue);            
+            // Dealer.Hit(Dealer);
+            Console.WriteLine(PlayerManager.Dealer.HighHandValue);
 
-            /******Test Area ********/         
+            /******Test Area ********/
         }
 
         public void UnLoadContent() {
@@ -76,7 +73,7 @@ namespace BlackJack {
 
         public void Draw(SpriteBatch spriteBatch) {
             PlayerManager.Draw(spriteBatch);
-            ButtonManager.Draw(spriteBatch);            
-        } 
+            ButtonManager.Draw(spriteBatch);
+        }
     }
 }

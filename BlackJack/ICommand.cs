@@ -95,9 +95,10 @@ namespace BlackJack {
 
         }
         public void Execute(Player player) {
-            player.ChipCount += GameManager.BetAdd;
+            if (player.BetAmount + GameManager.SubBet <= player.ChipCount) {
+                player.BetAmount += GameManager.SubBet;
+            }
         }
-
     }
 
     class SubstractFromBet : ICommand {
@@ -110,7 +111,9 @@ namespace BlackJack {
 
         }
         public void Execute(Player player) {
-            player.ChipCount -= GameManager.BetSubstract;
+            if (GameManager.SubBet <= player.BetAmount) {
+                player.BetAmount -= GameManager.SubBet;
+            }         
         }
     }
 
