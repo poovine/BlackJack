@@ -104,13 +104,7 @@
     <Content Include="Content\BJAssets\chipsSheet.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\BJAssets\chipWhite.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\BJAssets\chipWhite2.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\BJAssets\chipWhite3.png">
+    <Content Include="Content\BJAssets\chipsSheet2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\BJAssets\dealer.png">

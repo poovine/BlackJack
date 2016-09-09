@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 namespace BlackJack {
     interface ICommand {
         void Execute(Dealer dealer, Player player);
+        void Execute(Dealer dealer);
+        void Execute(Player player);
     }
 
     class HitCommand : ICommand {
@@ -17,6 +19,10 @@ namespace BlackJack {
         public void Execute(Dealer dealer) {
             dealer.Hit(dealer);
         }
+
+        public void Execute(Player player) {
+
+        }
     }
 
     class StandCommand : ICommand {
@@ -26,6 +32,9 @@ namespace BlackJack {
         }
 
         public void Execute(Dealer dealer) {
+
+        }
+        public void Execute(Player player) {
 
         }
     }
@@ -39,6 +48,9 @@ namespace BlackJack {
         }
 
         public void Execute(Dealer dealer) {
+
+        }
+        public void Execute(Player player) {
 
         }
     }
@@ -56,6 +68,9 @@ namespace BlackJack {
         public void Execute(Dealer dealer) {
 
         }
+        public void Execute(Player player) {
+
+        }
     }
 
     class BetCommand : ICommand {
@@ -65,6 +80,38 @@ namespace BlackJack {
         public void Execute(Dealer dealer) {
 
         }
+        public void Execute(Player player) {
+
+        }
+    }
+
+    class AddToBet : ICommand {
+        public int Amount { get; set; }
+
+        public void Execute(Dealer dealer, Player player) {
+
+        }
+        public void Execute(Dealer dealer) {
+
+        }
+        public void Execute(Player player) {
+            player.ChipCount += GameManager.BetAdd;
+        }
+
+    }
+
+    class SubstractFromBet : ICommand {
+        public int Amount { get; set; }
+
+        public void Execute(Dealer dealer, Player player) {
+
+        }
+        public void Execute(Dealer dealer) {
+
+        }
+        public void Execute(Player player) {
+            player.ChipCount -= GameManager.BetSubstract;
+        }
     }
 
     class DoNothingCommand : ICommand {
@@ -72,6 +119,9 @@ namespace BlackJack {
             
         }
         public void Execute(Dealer dealer) {
+
+        }
+        public void Execute(Player player) {
 
         }
     }

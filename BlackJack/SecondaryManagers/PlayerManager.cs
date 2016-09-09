@@ -24,7 +24,7 @@ namespace BlackJack {
         }
 
         public void Update(GameTime gameTime) {
-
+            Player.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch) {
